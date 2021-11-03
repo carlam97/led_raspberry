@@ -17,8 +17,26 @@ def on_connect(client, userdata, flags, rc):
     print('[STATUS] Conectando ao Broker, Resultado: ', + str(rc))
     # Increver no tópico configurado
     cliente.subscribe(TopicoSubscribe)
+
+# Função para receber mensagem
+def on_message(client, userdata, msg):
+    MensagemRecebida = str(msg.payload)
+    print("[MSG RECEBIDA] Topico: "+ msg.topic+" / Mensagem: "+ MensagemRecebida)
     
-    
+# Programa Principal
+try: 
+  print("[STATUS] Iniciando o MQTT...")
+
+  client = mqtt.Client()
+  client.on_connect = on_connect
+  client.on_message = on_message
+
+  # Conexão
+  client.connect(Broker, PortaBroker, KeepAliveBroker)
+  client.loop_forever()
+except KeyboardInterrupt:
+  print("Ctrl+C pressionado, encerrando a aplicação")
+  sys.exit(0)
 
 
 GPIO.setmode(GPIO.BCM)
