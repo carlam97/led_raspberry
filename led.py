@@ -38,12 +38,13 @@ except KeyboardInterrupt:
   print("Ctrl+C pressionado, encerrando a aplicação")
   sys.exit(0)
 
+# código para acender e apagar led usando raspberry
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-GPIO.setup(18,GPIO.OUT)
-print "LED on"
-GPIO.output(18,GPIO.HIGH)
-time.sleep(1)
-print "LED off"
-GPIO.output(18,GPIO.LOW)
+#GPIO.setmode(GPIO.BCM)
+#GPIO.setwarnings(False)
+#GPIO.setup(18,GPIO.OUT)
+#print "LED on"
+#GPIO.output(18,GPIO.HIGH)
+#time.sleep(1)
+#print "LED off"
+#GPIO.output(18,GPIO.LOW)
